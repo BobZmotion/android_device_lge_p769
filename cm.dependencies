@@ -1,0 +1,12 @@
+[
+ {
+   "repository": "lge-kernel-omap4",
+   "target_path": "kernel/lge/omap4-common"
+ }
+]
+#[
+#{
+#   "repository": "android_kernel_lge_ms769",
+#   "target_path": "kernel/lge/ms769"
+# }
+#]
