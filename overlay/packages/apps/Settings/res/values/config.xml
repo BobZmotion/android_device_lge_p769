@@ -15,6 +15,6 @@
 -->
 
 <resources>
-    <!-- LED Flashlight -->
     <bool name="has_led_flash">true</bool>
+    <bool name="config_show_homeWake">true</bool>
 </resources>
