@@ -57,8 +57,8 @@ PRODUCT_COPY_FILES += \
 
 # Sgx modules
 PRODUCT_COPY_FILES += \
-    device/lge/p769/prebuilt/modules/omaplfb_sgx540_120.ko:system/modules/omaplfb_sgx540_120.ko \
-    device/lge/p769/prebuilt/modules/pvrsrvkm_sgx540_120.ko:system/modules/pvrsrvkm_sgx540_120.ko
+    $(LOCAL_PATH)/prebuilt/modules/omaplfb_sgx540_120.ko:system/modules/omaplfb_sgx540_120.ko \
+    $(LOCAL_PATH)/prebuilt/modules/pvrsrvkm_sgx540_120.ko:system/modules/pvrsrvkm_sgx540_120.ko
 
 # Sound configs
 PRODUCT_COPY_FILES += \
