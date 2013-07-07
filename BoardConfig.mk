@@ -67,7 +67,7 @@ TARGET_SPECIFIC_HEADER_PATH := device/lge/p769/include
 
 # Try to build the kernel
 TARGET_KERNEL_CONFIG := 1chaos_defconfig
-TARGET_KERNEL_SOURCE := kernel/lge/omap4-common
+TARGET_KERNEL_SOURCE := kernel/lge/ms769
 
 # fix this up by examining /proc/mtd on a running device
 TARGET_USERIMAGES_USE_EXT4 := true
