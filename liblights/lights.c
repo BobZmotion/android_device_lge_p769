@@ -37,7 +37,7 @@ static pthread_once_t g_init = PTHREAD_ONCE_INIT;
 static pthread_mutex_t g_lock = PTHREAD_MUTEX_INITIALIZER;
 
 char const*const LCD_FILE
-        = "/sys/class/backlight/display0/brightness";
+        = "/sys/devices/platform/omap/omap_i2c.2/i2c-2/2-0038/brightness";
 char const*const KEYBOARD_FILE
         = "/sys/class/leds/button-backlight/brightness";
 
