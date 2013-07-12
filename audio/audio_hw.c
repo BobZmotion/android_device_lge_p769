@@ -259,11 +259,11 @@ struct route_setting defaults[] = {
     /* general */
     {
         .ctl_name = MIXER_DL2_LEFT_EQUALIZER,
-        .strval = "High-pass -20dB",
+        .strval = MIXER_0DB_HIGH_PASS,
     },
     {
         .ctl_name = MIXER_DL2_RIGHT_EQUALIZER,
-        .strval = MIXER_450HZ_HIGH_PASS,
+        .strval = MIXER_0DB_HIGH_PASS,
     },
     {
         .ctl_name = MIXER_DL1_EQUALIZER,
@@ -279,11 +279,11 @@ struct route_setting defaults[] = {
     },
     {
         .ctl_name = MIXER_DL2_MEDIA_PLAYBACK_VOLUME,
-        .intval = MIXER_ABE_GAIN_0DB + 5,
+        .intval = MIXER_ABE_GAIN_0DB - 3,
     },
     {
         .ctl_name = MIXER_DL1_VOICE_PLAYBACK_VOLUME,
-        .intval = MIXER_ABE_GAIN_0DB - 20,
+        .intval = MIXER_ABE_GAIN_0DB,
     },
     {
         .ctl_name = MIXER_DL2_VOICE_PLAYBACK_VOLUME,
@@ -295,7 +295,7 @@ struct route_setting defaults[] = {
     },
     {
         .ctl_name = MIXER_EARPHONE_PLAYBACK_VOLUME,
-        .intval = DB_TO_EARPIECE_VOLUME(0),
+        .intval = DB_TO_EARPIECE_VOLUME(6),
     },
     {
         .ctl_name = MIXER_AUDUL_VOICE_UL_VOLUME,
@@ -3070,3 +3070,4 @@ struct audio_module HAL_MODULE_INFO_SYM = {
         .methods = &hal_module_methods,
     },
 };
+
