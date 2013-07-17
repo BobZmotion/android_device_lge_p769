@@ -142,3 +142,17 @@ COMMON_GLOBAL_CFLAGS += -DBOARD_CHARGING_CMDLINE_NAME='"chg"' -DBOARD_CHARGING_C
 # adb root
 ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0
 ADDITIONAL_DEFAULT_PROPERTIES += ro.allow.mock.location=1
+
+# Security Enhanced Linux
+ifeq ($(HAVE_SELINUX),true)
+
+BOARD_SEPOLICY_DIRS := \
+    device/lge/p760/selinux
+
+BOARD_SEPOLICY_UNION := \
+    file_contexts \
+    pvrsrvinit.te \
+    device.te \
+    domain.te
+
+endif
