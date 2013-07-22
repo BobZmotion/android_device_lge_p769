@@ -133,7 +133,6 @@ BOARD_RIL_CLASS := ../../../device/lge/p769/ril/
 BOARD_CUSTOM_GRAPHICS := ../../../device/lge/p769/recovery/recovery-gfx.c
 BOARD_CHARGER_ENABLE_SUSPEND := true
 
-<<<<<<< HEAD
 # Vibrator
 BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/lge/p769/prebuilt/vibrator.c
 
