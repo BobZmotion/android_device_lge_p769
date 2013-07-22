@@ -133,6 +133,7 @@ BOARD_RIL_CLASS := ../../../device/lge/p769/ril/
 BOARD_CUSTOM_GRAPHICS := ../../../device/lge/p769/recovery/recovery-gfx.c
 BOARD_CHARGER_ENABLE_SUSPEND := true
 
+<<<<<<< HEAD
 # Vibrator
 BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/lge/p769/prebuilt/vibrator.c
 
@@ -144,8 +145,6 @@ ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0
 ADDITIONAL_DEFAULT_PROPERTIES += ro.allow.mock.location=1
 
 # Security Enhanced Linux
-ifeq ($(HAVE_SELINUX),true)
-
 BOARD_SEPOLICY_DIRS := \
     device/lge/p760/selinux
 
@@ -154,5 +153,3 @@ BOARD_SEPOLICY_UNION := \
     pvrsrvinit.te \
     device.te \
     domain.te
-
-endif
