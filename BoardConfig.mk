@@ -147,7 +147,7 @@ ADDITIONAL_DEFAULT_PROPERTIES += ro.allow.mock.location=1
 
 # Security Enhanced Linux
 BOARD_SEPOLICY_DIRS := \
-    device/lge/p760/selinux
+    device/lge/p769/selinux
 
 BOARD_SEPOLICY_UNION := \
     file_contexts \
