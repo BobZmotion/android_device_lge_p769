@@ -101,6 +101,7 @@ WIFI_BAND := 802_11_ABGN
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
+BOARD_BLUEDROID_VENDOR_CONF := device/lge/p769/bluetooth/vnd_lge_p769.txt
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/lge/p769/bluetooth
 
 # Camera
