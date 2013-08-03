@@ -11,7 +11,6 @@ dalvik.vm.dexopt-data-only=1
 
 # Radio stuffs
 rild.libpath=/system/lib/lge-ril.so
-ro.telephony.ril_class=U2RIL
 
 # Config the microphones
 omap.audio.mic.main=AMic0
