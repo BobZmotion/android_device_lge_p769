@@ -209,6 +209,9 @@ on post-fs-data
     chown radio radio /sys/devices/platform/omap/omap4-keypad/key_saving
     chown radio radio /sys/devices/platform/lge-gkpd/key_lock
 
+# TelephonyManager.java in 4.3 requires this
+    chmod 0644 /proc/cmdline
+
 # BT UART2
     chmod 0660 /sys/class/rfkill/rfkill0/state
     chmod 0660 /sys/class/rfkill/rfkill0/type
