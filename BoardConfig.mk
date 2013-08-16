@@ -140,6 +140,9 @@ RECOVERY_FSTAB_VERSION := 2
 # Vibrator
 BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/lge/p769/prebuilt/vibrator.c
 
+# USB
+TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/class/android_usb/f_mass_storage/lun0/file"
+
 # Charging
 COMMON_GLOBAL_CFLAGS += -DBOARD_CHARGING_CMDLINE_NAME='"chg"' -DBOARD_CHARGING_CMDLINE_VALUE='"68"'
 
