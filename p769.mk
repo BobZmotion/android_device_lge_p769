@@ -52,7 +52,7 @@ PRODUCT_COPY_FILES += \
 
 # Scripts and confs
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/root/fstab.u2:root/fstab.u2 \
+    $(LOCAL_PATH)/root/fstab.lgep769board:root/fstab.lgep769board \
     $(LOCAL_PATH)/root/init.lgep769board.rc:root/init.lgep769board.rc \
     $(LOCAL_PATH)/root/init.p769.usb.rc:root/init.p769.usb.rc \
     $(LOCAL_PATH)/root/ueventd.lgep769board.rc:root/ueventd.lgep769board.rc \
