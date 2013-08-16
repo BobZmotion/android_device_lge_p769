@@ -138,9 +138,6 @@ PRODUCT_PACKAGES += \
     libomap_mm_library_jni \
     libtimemmgr
 
-FRAMEWORKS_BASE_SUBDIRS += \
-	$(addsuffix /java, omapmmlib )
-
 PRODUCT_PACKAGES += \
     libskiahwdec \
     libskiahwenc
