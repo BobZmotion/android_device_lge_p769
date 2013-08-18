@@ -8,23 +8,13 @@ on early-init
     chmod 660 /sys/module/lge_handle_panic/parameters/hidden_reset_enable
 
 on init
-    # See storage config details at http://source.android.com/tech/storage/
-    mkdir /mnt/shell/emulated 0700 shell shell
-    mkdir /storage/emulated 0555 root root
-    mkdir /storage/sdcard1 0555 root root
-    mkdir /storage/usbdisk0 0555 root root
+    export EXTERNAL_STORAGE /storage/sdcard0
 
-    export EXTERNAL_STORAGE /storage/emulated/legacy
-    export SECONDARY_STORAGE /storage/sdcard1
-    export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
-    export EMULATED_STORAGE_TARGET /storage/emulated
+    mkdir /storage/sdcard0 0000 root root
+    mkdir /storage/usbdisk0 0000 root root
 
     # Support legacy paths
-    symlink /storage/emulated/legacy /mnt/sdcard
-    symlink /storage/emulated/legacy /storage/sdcard0
-    symlink /mnt/shell/emulated/0 /storage/emulated/legacy
-
-    symlink /storage/sdcard1 /mnt/ext_sdcard
+    symlink /storage/sdcard0 /mnt/sdcard 
     symlink /storage/usb0 /mnt/usbdisk0
 
 on early-fs
@@ -33,9 +23,6 @@ on early-fs
 
 on fs
     mount_all ./fstab.lgep769board
-
-# disable FUSE property value
-    setprop ro.crypto.fuse_sdcard true
 
 # This needs to run ASAP to set up the framebuffer before zygote kicks in
     start pvrsrvinit
@@ -89,11 +76,6 @@ on post-fs-data
 
 # Create Directory for widevine
     mkdir /persist/widevine 0770 drm system
-
-# FUSE property value
-    # we will remap this as /mnt/sdcard with the sdcard fuse tool
-    mkdir /data/media 0775 media_rw media_rw
-    chown media_rw media_rw /data/media
 
 # change permissions for S3D hardware
     chown system system /sys/devices/platform/omapdss/display0/s3d_enable
@@ -496,14 +478,7 @@ service glgps /system/bin/glgps -c /system/etc/gps_brcm_conf.xml
     user system
     group net_raw sdcard_rw system radio
 
-# create virtual SD card at /mnt/sdcard, based on the /data/media directory
-# daemon will drop to user/group system/media_rw after initializing
-# underlying files in /data/media will be created with user and group media_rw (1023)
-# FUSE daemon
-service sdcard /system/bin/sdcard /data/media /mnt/shell/emulated 1023 1023
-    class late_start
-
-## Set the wifi mac address
+# Set the wifi mac address
 on property:dev.bootcomplete=1
     exec /system/bin/wifimac
 
