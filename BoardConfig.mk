@@ -160,4 +160,4 @@ BOARD_SEPOLICY_UNION := \
     device.te \
     domain.te
 
-BOARD_HARDWARE_CLASS := device/lge/p760/cmhw/
+BOARD_HARDWARE_CLASS := device/lge/p769/cmhw/
