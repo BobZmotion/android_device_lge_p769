@@ -112,4 +112,7 @@
 
     <!-- If this is true, the screen will fade off. -->
     <bool name="config_animateScreenLights">false</bool>
+
+    <!-- Button illumination -->
+    <bool name="config_deviceHasVariableButtonBrightness">true</bool>
 </resources>

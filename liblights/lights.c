@@ -40,6 +40,8 @@ char const*const LCD_FILE
         = "/sys/devices/platform/omap/omap_i2c.2/i2c-2/2-0038/brightness";
 char const*const KEYBOARD_FILE
         = "/sys/class/leds/button-backlight/brightness";
+char const*const BUTTON_CURRENTS_FILE
+	= "/sys/class/leds/button-backlight/currents";
 
 
 void init_globals(void)
@@ -92,6 +94,7 @@ set_light_backlight(struct light_device_t* dev,
 
     pthread_mutex_lock(&g_lock);
     err = write_int(LCD_FILE, brightness);
+    err = write_int(BUTTON_CURRENTS_FILE, (brightness / 25));
     pthread_mutex_unlock(&g_lock);
 
     return err;
