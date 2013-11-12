@@ -2,6 +2,7 @@ import init.p769.usb.rc
 
 on early-init
 # create mountpoints
+    chmod 0701 /mnt/media_rw
     mkdir /storage 0050 system sdcard_r
     mkdir /persist 0500 system system
     chown system system /sys/module/lge_handle_panic/parameters/hidden_reset_enable
@@ -10,8 +11,10 @@ on early-init
 on init
     export EXTERNAL_STORAGE /storage/sdcard0
 
-    mkdir /storage/sdcard0 0000 root root
-    mkdir /storage/usbdisk0 0000 root root
+    mkdir /mnt/media_rw/sdcard0 0700 media_rw media_rw
+    mkdir /mnt/media_rw/usbdisk0 0700 media_rw media_rw
+    mkdir /storage/sdcard0 0700 root root
+    mkdir /storage/usbdisk0 0700 root root
 
     # Support legacy paths
     symlink /storage/sdcard0 /mnt/sdcard 
