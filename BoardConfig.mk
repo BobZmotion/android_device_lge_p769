@@ -139,6 +139,11 @@ BOARD_CUSTOM_GRAPHICS := ../../../device/lge/p769/recovery/recovery-gfx.c
 BOARD_CHARGER_ENABLE_SUSPEND := true
 TARGET_RECOVERY_FSTAB := device/lge/p769/root/fstab.lgep769board
 RECOVERY_FSTAB_VERSION := 2
+DEVICE_RESOLUTION := 540x960
+TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
+BOARD_HAS_NO_SELECT_BUTTON := true
+BOARD_RECOVERY_SWIPE := true
+BOARD_UMS_LUNFILE := "/sys/devices/virtual/android_usb/android0/f_mass_storage/lun%d/file"
 
 # Vibrator
 BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/lge/p769/prebuilt/vibrator.c
