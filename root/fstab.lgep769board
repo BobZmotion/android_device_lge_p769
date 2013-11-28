@@ -11,10 +11,8 @@
 /dev/block/platform/omap/omap_hsmmc.1/by-name/mlt                            /mpt                ext4    nosuid,nodev,barrier=1,noauto_da_alloc                          wait
 
 # vold-managed volumes ("block device" is actually a sysfs devpath)
-/devices/platform/omap/omap_hsmmc.0/mmc_host                                 auto                vfat    defaults                                                        voldmanaged=sdcard0:auto,noemulatedsd
-
-# USB storage
-/devices/platform/omap/musb-omap2430/musb-hdrc/gadget/net/usb0               auto                auto    defaults                                                        voldmanaged=usbdisk0:auto
+/devices/platform/omap/omap_hsmmc.1/mmc_host/mmc0                            auto                auto    defaults                                                        voldmanaged=sdcard0:auto,nonremovable
+/devices/platform/omap/omap_hsmmc.0/mmc_host/mmc1                            auto                auto    defaults                                                        voldmanaged=sdcard1:auto,noemulatedsd
 
 # Recovery
 /dev/block/mmcblk0p3                                                         /boot               emmc    defaults                                                        recoveryonly
