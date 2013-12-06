@@ -200,8 +200,8 @@
 #define NORMAL_SPEAKER_VOLUME                 6
 #define VOICE_CALL_SPEAKER_VOLUME             5
 
-#define HEADSET_VOLUME                        0
-#define HEADPHONE_VOLUME                      0 /* allow louder output for headphones */
+#define HEADSET_VOLUME                        -10
+#define HEADPHONE_VOLUME                      -10 /* allow louder output for headphones */
 
 /* product-specific defines */
 #define PRODUCT_DEVICE_PROPERTY "ro.product.device"
