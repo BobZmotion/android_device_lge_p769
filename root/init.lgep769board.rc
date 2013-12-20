@@ -4,35 +4,22 @@ on early-init
     # create mountpoints
     chmod 0701 /mnt/media_rw
     chown root root /mnt/media_rw
+    mkdir /storage 0050 system sdcard_r
     # Set permissions for persist partition
     mkdir /persist 0500 system system
     chown system system /sys/module/lge_handle_panic/parameters/hidden_reset_enable
     chmod 660 /sys/module/lge_handle_panic/parameters/hidden_reset_enable
 
 on init
-    mkdir /mnt/shell/emulated 0700 shell shell
-    mkdir /storage 0550 system sdcard_r
-    mkdir /storage/emulated 0555 root root
-
-    #External storage directories
     mkdir /mnt/media_rw/sdcard0 0700 media_rw media_rw
-    mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
-
     mkdir /storage/sdcard0 0700 root root
-    mkdir /storage/sdcard1 0700 root root
 
-    export EXTERNAL_STORAGE /storage/emulated/legacy
-    export SECONDARY_STORAGE /storage/sdcard1
-    export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
-    export EMULATED_STORAGE_TARGET /storage/emulated
+    export EXTERNAL_STORAGE /storage/sdcard0
 
-    # for backwards compatibility
-    symlink /storage/emulated/legacy /sdcard
-    symlink /storage/emulated/legacy /mnt/sdcard
-    symlink /storage/emulated/legacy /storage/sdcard0
-    symlink /mnt/shell/emulated/0 /storage/emulated/legacy
-    symlink /storage/sdcard1 /mnt/external_sd
-    symlink /storage/sdcard1 /external_sd
+    # Support legacy paths
+    symlink /storage/sdcard0 /sdcard
+    symlink /storage/sdcard0 /mnt/sdcard
+    symlink /storage/sdcard0 /storage/sdcard
 
 on early-fs
     mkdir /dvp 0771 system system
@@ -42,6 +29,18 @@ on fs
     mount_all ./fstab.lgep769board
 # disable FUSE property value
     setprop ro.crypto.fuse_sdcard true
+
+    wait /dev/block/platform/omap/omap_hsmmc.1/by-name/divxkey
+    exec /system/bin/e2fsck -p /dev/block/platform/omap/omap_hsmmc.1/by-name/divxkey
+    mount ext4 /dev/block/platform/omap/omap_hsmmc.1/by-name/divxkey /dvp noatime nosuid nodev
+
+    wait /dev/block/platform/omap/omap_hsmmc.1/by-name/persist
+    exec /system/bin/e2fsck -p /dev/block/platform/omap/omap_hsmmc.1/by-name/persist
+    mount ext4 /dev/block/platform/omap/omap_hsmmc.1/by-name/persist /persist noatime nosuid nodev
+
+    wait /dev/block/platform/omap/omap_hsmmc.1/by-name/mlt
+    exec /system/bin/e2fsck -p /dev/block/platform/omap/omap_hsmmc.1/by-name/mlt
+    mount ext4 /dev/block/platform/omap/omap_hsmmc.1/by-name/mlt /mpt nosuid nodev barrier=1 noauto_da_alloc
 
 # This needs to run ASAP to set up the framebuffer before zygote kicks in
     start pvrsrvinit
@@ -98,7 +97,7 @@ on post-fs-data
 
 # FUSE property value
     # we will remap this as /mnt/sdcard with the sdcard fuse tool
-    mkdir /data/media 0777 media_rw media_rw
+    mkdir /data/media 0775 media_rw media_rw
     chown media_rw media_rw /data/media
 
 # change permissions for S3D hardware
@@ -520,15 +519,7 @@ service glgps /system/bin/glgps -c /system/etc/gps_brcm_conf.xml
 # daemon will drop to user/group system/media_rw after initializing
 # underlying files in /data/media will be created with user and group media_rw (1023)
 # FUSE daemon
-service sdcard /system/bin/sdcard -u 1023 -g 1023 -l /data/media /mnt/shell/emulated
-    class late_start
-    oneshot
-
 service fuse_sdcard0 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard0 /storage/sdcard0
-    class late_start
-    disabled
-
-service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard1 /storage/sdcard1
     class late_start
     disabled
 
