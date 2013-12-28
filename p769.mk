@@ -10,10 +10,6 @@ DEVICE_PACKAGE_OVERLAYS += device/lge/p769/overlay
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
-# APN list
-PRODUCT_COPY_FILES += \
-    vendor/cm/prebuilt/common/etc/apns-conf.xml:system/etc/apns-conf.xml
-
 # GPS
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/gps_brcm_conf.xml:system/etc/gps_brcm_conf.xml
