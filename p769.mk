@@ -9,6 +9,7 @@ $(call inherit-product, device/common/gps/gps_us.mk)
 DEVICE_PACKAGE_OVERLAYS += device/lge/p769/overlay
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
+$(call inherit-product, hardware/ti/omap4xxx/omap4.mk)
 
 # GPS
 PRODUCT_COPY_FILES += \
@@ -22,6 +23,7 @@ PRODUCT_COPY_FILES += \
 
 # Permission files
 PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
     frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
@@ -94,54 +96,6 @@ PRODUCT_PACKAGES += \
     audio_policy.default \
     audio.primary.p769 \
     hwcomposer.p769
-
-PRODUCT_PACKAGES += \
-    OMXCore \
-    libOMX_Core \
-    libdomx \
-    libOMX.TI.DUCATI1.VIDEO.H264E \
-    libOMX.TI.DUCATI1.VIDEO.MPEG4E \
-    libOMX.TI.DUCATI1.VIDEO.CAMERA \
-    libOMX.TI.DUCATI1.MISC.SAMPLE \
-    libOMX.TI.DUCATI1.VIDEO.DECODER.secure \
-    libOMX.TI.DUCATI1.VIDEO.DECODER
-
-PRODUCT_PACKAGES += \
-    libtiutils \
-    libipcutils \
-    libipc \
-    libnotify \
-    syslink_trace_daemon.out \
-    librcm \
-    libsysmgr \
-    syslink_daemon.out \
-    dmm_daemontest.out \
-    event_listener.out \
-    interm3.out \
-    gateMPApp.out \
-    heapBufMPApp.out \
-    heapMemMPApp.out \
-    listMPApp.out \
-    messageQApp.out \
-    nameServerApp.out \
-    sharedRegionApp.out \
-    memmgrserver.out \
-    notifyping.out \
-    ducati_load.out \
-    procMgrApp.out \
-    slpmresources.out \
-    slpmtransport.out \
-    utilsApp.out \
-    libd2cmap \
-    libomap_mm_library_jni \
-    libtimemmgr
-
-PRODUCT_PACKAGES += \
-    libskiahwdec \
-    libskiahwenc
-
-PRODUCT_PACKAGES += \
-    libstagefrighthw
 
 # Charger mode
 PRODUCT_PACKAGES += \
