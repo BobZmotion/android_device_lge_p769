@@ -20,7 +20,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     PRIVATE_BUILD_DESC="u2_mpcs_us-user 4.1.2 JZO54K LGMS76910b.4DBC6301 release-keys"
 
 # Enable Torch
-PRODUCT_PACKAGES += Torch WiFiDirectDemo
+PRODUCT_PACKAGES += Torch
 
 # SIM Toolkit
 PRODUCT_PACKAGES += \
