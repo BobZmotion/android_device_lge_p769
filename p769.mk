@@ -83,12 +83,6 @@ $(call inherit-product, build/target/product/full.mk)
 PRODUCT_AAPT_CONFIG := normal hdpi
 PRODUCT_AAPT_PREF_CONFIG := hdpi
 
-# Support for Browser's saved page feature. This allows
-# for pages saved on previous versions of the OS to be
-# viewed on the current OS.
-PRODUCT_PACKAGES += \
-    libskia_legacy
-
 PRODUCT_PACKAGES += \
     lights.omap4 \
     libaudioutils \
