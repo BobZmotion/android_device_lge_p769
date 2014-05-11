@@ -69,8 +69,7 @@ pvrsrvkm_sgx$(SGXCORE)_$(SGX_CORE_REV)-y += \
 	services4/srvkm/common/ttrace.o
 endif
 
-#ifneq ($(W),1)
-ifeq (2,1)
+ifneq ($(W),1)
 CFLAGS_osfunc.o := -Werror
 CFLAGS_mutils.o := -Werror
 CFLAGS_mmap.o := -Werror
@@ -118,8 +117,7 @@ pvrsrvkm_sgx$(SGXCORE)_$(SGX_CORE_REV)-y += \
 	services4/srvkm/devices/sgx/mmu.o \
 	services4/srvkm/devices/sgx/pb.o
 
-#ifneq ($(W),1)
-ifeq (2,1)
+ifneq ($(W),1)
 CFLAGS_bridged_sgx_bridge.o := -Werror
 CFLAGS_sgxinit.o := -Werror
 CFLAGS_sgxpower.o := -Werror

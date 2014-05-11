@@ -53,14 +53,13 @@ COMMON_FLAGS = -W -Wall
 #
 COMMON_CFLAGS := $(COMMON_FLAGS) \
  -Wdeclaration-after-statement -Wno-format-zero-length \
- -Wmissing-prototypes -Wstrict-prototypes
+ -Wmissing-prototypes -Wstrict-prototypes -Wno-missing-field-initializers
 
 # Additional warnings, and optional warnings.
 #
 WARNING_CFLAGS := \
  -Wpointer-arith -Wunused-parameter \
  -Wmissing-format-attribute \
- $(call cc-option,-Wno-missing-field-initializers) \
  $(call cc-option,-fdiagnostics-show-option)
 
 ifeq ($(W),1)
@@ -92,8 +91,7 @@ WARNING_CFLAGS += \
 HOST_WARNING_CFLAGS := \
  -Wpointer-arith -Wunused-parameter \
  -Wmissing-format-attribute \
- $(call host-cc-option,-Wno-missing-field-initializers) \
- $(call host-cc-option,-fdiagnostics-show-option)
+$(call host-cc-option,-fdiagnostics-show-option)
 
 ifeq ($(W),1)
 HOST_WARNING_CFLAGS += \
@@ -133,7 +131,6 @@ KBUILD_WARNING_CFLAGS += \
  $(call kernel-cc-optional-warning,-Wmissing-declarations) \
  $(call kernel-cc-optional-warning,-Wmissing-include-dirs) \
  $(call kernel-cc-optional-warning,-Wnested-externs) \
- $(call kernel-cc-optional-warning,-Wno-missing-field-initializers) \
  $(call kernel-cc-optional-warning,-Wold-style-definition) \
  $(call kernel-cc-optional-warning,-Woverlength-strings) \
  $(call kernel-cc-optional-warning,-Wpacked) \
