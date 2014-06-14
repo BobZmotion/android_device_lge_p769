@@ -1,4 +1,4 @@
 android_device_lge_p769
 =======================
 
-Device tree for MS769 (MetroPCS LG L9)
+Device tree for P769 (LG L9)
